@@ -35,7 +35,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/log-viewer/styles.scss"
             ],
             "scripts": [],
             "customWebpackConfig": {
