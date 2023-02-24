@@ -22,12 +22,12 @@
 }
 .overflow-guard {
   overflow: hidden;
-  height: 700px;
+  height: 50vh;
 }
 .scrollable {
   overflow: scroll;
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
 }
 .log-area-content {
   width: max-content;
