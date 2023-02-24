@@ -16,4 +16,5 @@ export interface LogLine {
   logKey: string;
   logMessage: string;
   color: string;
+  logLevelString: string;
 }

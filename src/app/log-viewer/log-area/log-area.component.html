@@ -1,28 +1,32 @@
-<p style="color: red;">LOG AREA {{ logLines.length }}</p>
 <!-- log area container -->
 <div class="log-area-container">
   <!-- log area instance -->
   <div>
     <!-- overflow guard? -->
-    <div>
-      <!-- line numbers -->
-      <div></div>
+    <div class="overflow-guard">
       <!-- scrollable element -->
-      <div>
+      <div class="scrollable">
         <!-- lines content -->
-        <div>
+        <div class="log-area-content">
           <!-- single line -->
-          <div *ngFor="let line of logLines">
-            <span [ngStyle]="{ color: line.color }">
-              <span>{{ line.date }}&nbsp;</span>
-              <span>{{ line.time }}</span>
-              <span>{{ line.mainProcessId }}</span>
-              <span>{{ line.workerProcessId }}</span>
-              <span>{{ line.logLevel }}</span>
-              <span>{{ line.logKey }}</span>
-              <span>{{ line.logMessage }}</span>
-            </span>
-          </div>
+          <table>
+            <tbody>
+              <tr
+                class="log-line"
+                *ngFor="let line of logLines; let i = index"
+                [ngStyle]="{ color: line.color }"
+              >
+                <td class="log-column log-line-number">{{ i }}</td>
+                <td class="log-column">{{ line.date }}</td>
+                <td class="log-column">{{ line.time }}</td>
+                <td class="log-column">{{ line.mainProcessId }}</td>
+                <td class="log-column">{{ line.workerProcessId }}</td>
+                <td class="log-column">{{ line.logLevelString }}</td>
+                <td class="log-column">{{ line.logKey }}</td>
+                <td class="log-column">{{ line.logMessage }}</td>
+              </tr>
+            </tbody>
+          </table>
           <!-- horizontal scrollbar -->
           <div></div>
           <!-- for vertical scrollbar? -->

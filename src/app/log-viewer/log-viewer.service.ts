@@ -17,7 +17,8 @@ export class LogViewerService {
         logLevel: LogLevel.info,
         logKey: 'AndroidRuntime',
         logMessage: log,
-        color: this.getColorFromLogLevel(LogLevel.info)
+        color: this.getColorFromLogLevel(LogLevel.info),
+        logLevelString: this.logLevelToString(LogLevel.info)
       };
     }
 
@@ -62,20 +63,21 @@ export class LogViewerService {
       logLevel,
       logKey,
       logMessage,
-      color: this.getColorFromLogLevel(logLevel)
+      color: this.getColorFromLogLevel(logLevel),
+      logLevelString: this.logLevelToString(logLevel)
     };
   }
 
   private getColorFromLogLevel(logLevel: LogLevel): string {
     switch (logLevel) {
       case LogLevel.debug:
-        return 'green';
+        return 'cyan';
       case LogLevel.info:
-        return 'yellow';
+        return 'greenyellow';
       case LogLevel.verbose:
         return 'orange';
       case LogLevel.warning:
-        return 'blue';
+        return 'brown';
       case LogLevel.error:
         return 'red';
       case LogLevel.assert:
@@ -106,6 +108,23 @@ export class LogViewerService {
         return LogLevel.assert;
       default:
         throw new Error(`Failed to parse log level: ${logLevel}`);
+    }
+  }
+
+  private logLevelToString(logLevel: LogLevel): string {
+    switch (logLevel) {
+      case LogLevel.debug:
+        return 'D';
+      case LogLevel.info:
+        return 'I';
+      case LogLevel.verbose:
+        return 'V';
+      case LogLevel.warning:
+        return 'W';
+      case LogLevel.error:
+        return 'E';
+      case LogLevel.assert:
+        return 'A';
     }
   }
 }

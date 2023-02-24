@@ -2,4 +2,34 @@
 
 .log-area-container {
   background-color: $log-background;
+  border-color: $secondary-background;
+  border-radius: 1px;
+  border-style: solid;
+  margin: 10px;
+}
+.log-line:hover {
+  -webkit-filter: brightness(70%);
+}
+.log-column {
+  padding-right: 5px;
+}
+.log-lines {
+  margin-left: 30px;
+}
+.log-line-number {
+  color: gray;
+  text-align: end;
+}
+.overflow-guard {
+  overflow: hidden;
+  height: 700px;
+}
+.scrollable {
+  overflow: scroll;
+  height: inherit;
+  width: inherit;
+}
+.log-area-content {
+  width: max-content;
+  height: max-content;
 }
