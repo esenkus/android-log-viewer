@@ -9,6 +9,6 @@ import { LogAreaComponent } from './log-area/log-area.component';
 @NgModule({
   declarations: [LogViewerComponent, LogAreaComponent],
   imports: [MatGridListModule, MatButtonModule],
-  exports: [CommonModule, SharedModule, LogViewerComponent],
+  exports: [CommonModule, SharedModule, LogViewerComponent]
 })
-export class LogViewerModule { }
+export class LogViewerModule {}
