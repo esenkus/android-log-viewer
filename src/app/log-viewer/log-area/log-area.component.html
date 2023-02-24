@@ -1,0 +1,31 @@
+<p style="color: red;">LOG AREA {{logLines.length}}</p>
+<!-- log area container -->
+<div style="color: red;">
+    <!-- log area instance -->
+    <div>
+        <!-- overflow guard? -->
+        <div>
+            <!-- line numbers -->
+            <div></div>
+            <!-- scrollable element -->
+            <div>
+                <!-- lines content -->
+                <div>
+                    DIV BEFORE
+                    <!-- single line -->
+                    <div *ngFor="let line of logLines">
+                        <span>{{line}}</span>
+                    </div>
+                </div>
+                <!-- horizontal scrollbar -->
+                <div></div>
+                <!-- for vertical scrollbar? -->
+                <!-- <canvas></canvas> -->
+                <!-- vertical scrollbar -->
+                <div></div>
+            </div>
+            <!-- mouse cursor -->
+            <!-- <textarea></textarea> -->
+        </div>
+    </div>
+</div>

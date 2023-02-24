@@ -1,0 +1,46 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+    selector: 'app-log-area',
+    templateUrl: './log-area.component.html',
+    styleUrls: ['./log-area.component.scss']
+})
+export class LogAreaComponent {
+
+    @Input()
+    logLines: String[] = [
+        "02-20 17:08:37.907  6294  6309 W SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [App Aware] Emulator Detection Guard - Emulator check instance 1 non-tamper action event added to App Aware report",
+        "02-20 17:08:37.910  6294  6309 I SECUREDEX-TEST: EMULATOR DETECTION called - NONTAMPER",
+        "02-20 17:08:37.910  6294  6309 I SECUREDEX-TEST: EMULATOR DETECTION tamperCount: 0 NonTamperCount: 1",
+        "02-20 17:08:37.912  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection Started.",
+        "02-20 17:08:37.947  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #1 Started.",
+        "02-20 17:08:37.987  6294  6299 I zygote64: Do full code cache collection, code=224KB, data=197KB",
+        "02-20 17:08:37.988  6294  6299 I zygote64: After code cache collection, code=176KB, data=121KB",
+        "02-20 17:08:38.204  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #1 Completed in 257 ms",
+        "02-20 17:08:38.206  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #3 Started.",
+        "02-20 17:08:38.226  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #3 Completed in 21 ms",
+        "02-20 17:08:38.227  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #4 Started.",
+        "02-20 17:08:38.232  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #4 Completed in 5 ms",
+        "02-20 17:08:38.233  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #5 Started.",
+        "02-20 17:08:38.258  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #5 Completed in 25 ms",
+        "02-20 17:08:38.259  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #6 Started.",
+        "02-20 17:08:38.338  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #6 Completed in 78 ms",
+        "02-20 17:08:38.338  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #7 Started.",
+        "02-20 17:08:38.360  6294  6299 I zygote64: Compiler allocated 4MB to compile int ei.VF.Yc(int, ei.Iz)",
+        "02-20 17:08:38.388  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #7 Completed in 49 ms",
+        "02-20 17:08:38.388  6294  6309 I SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection No dynamic instrumentation detected. Non-tamper action called.",
+        "02-20 17:08:38.391  6294  6299 I zygote64: Do partial code cache collection, code=213KB, data=150KB",
+        "02-20 17:08:38.392  6294  6299 I zygote64: After code cache collection, code=213KB, data=150KB",
+        "02-20 17:08:38.392  6294  6299 I zygote64: Increasing code cache capacity to 1024KB",
+        "02-20 17:08:38.392  6294  6309 W SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [App Aware] Dynamic Instrumentation Detection Guard - DID Check NonTamper non-tamper action event added to App Aware report",
+        "02-20 17:08:38.395  6294  6309 I SECUREDEX-TEST: DID called - NONTAMPER",
+        "02-20 17:08:38.395  6294  6309 I SECUREDEX-TEST: DID tamperCount: 0 NonTamperCount: 1",
+        "02-20 17:08:38.396  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection Completed in 483 ms",
+        "02-20 17:08:38.525  6294  6299 I zygote64: Compiler allocated 15MB to compile java.lang.String ei.xc.toString()",
+        "02-20 17:08:38.632  6294  6299 I zygote64: Compiler allocated 14MB to compile void ei.iz.zc()",
+        "02-20 17:08:38.785  6294  6299 I zygote64: Compiler allocated 17MB to compile void ei.WF.Yc()",
+        "02-20 17:08:39.190  6294  6309 W SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [App Aware] Root Detection Guard - rootDetection instance 1 non-tamper action event added to App Aware report",
+        "02-20 17:08:39.193  6294  6309 I SECUREDEX-TEST: ROOT DETECTION called - NONTAMPER",
+        "02-20 17:08:39.193  6294  6309 I SECUREDEX-TEST: ROOT DETECTION tamperCount: 0 NonTamperCount: 1]",
+    ]
+}
