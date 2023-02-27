@@ -5,7 +5,7 @@ import { LogLevel, LogLine } from './domain/Interfaces';
   providedIn: 'root'
 })
 export class LogViewerService {
-  constructor() {}
+  constructor() { }
 
   public logFromString(log: string): LogLine {
     if (log.startsWith('---') || log.startsWith('  ')) {
