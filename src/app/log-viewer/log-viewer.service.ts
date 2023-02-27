@@ -68,6 +68,32 @@ export class LogViewerService {
     };
   }
 
+  public shouldLogLineBeShown(
+    logLine: LogLine,
+    logLevelFilters: LogLevel[],
+    keyFilters: string[],
+    priorityKeyFilters: string[] = [],
+    valueFilter: string = ''
+  ): boolean {
+    if (!logLevelFilters.includes(logLine.logLevel)) {
+      return false;
+    }
+    if (
+      priorityKeyFilters.length &&
+      !priorityKeyFilters.includes(logLine.logKey)
+    ) {
+      return false;
+    }
+    if (keyFilters.length && !keyFilters.includes(logLine.logKey)) {
+      return false;
+    }
+    if (valueFilter.length && !valueFilter.includes(logLine.logMessage)) {
+      return false;
+    }
+
+    return true;
+  }
+
   private getColorFromLogLevel(logLevel: LogLevel): string {
     switch (logLevel) {
       case LogLevel.debug:
