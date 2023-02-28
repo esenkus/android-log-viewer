@@ -1,27 +1,22 @@
-<div>
-  <button mat-raised-button>Basic</button>
-  <p>log-viewer works!</p>
-  <mat-grid-list cols="2" rowHeight="100px">
-    <mat-grid-tile>
-      <app-log-filters
-        [dropdownName]="'Log Level Picker'"
-        [optionsList]="logLevelsList"
-        [inputName]="'Key Filter'"
-        (dropDownItemEvent)="updateLogLevelFilter($event)"
-        (inputFieldEvent)="updateKeyFilterSearchText($event)"
-      ></app-log-filters>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <app-log-filters
-        [dropdownName]="'Log Key Picker'"
-        [optionsList]="logKeyList"
-        [inputName]="'Value Filter'"
-        (dropDownItemEvent)="updateLogKeyFilter($event)"
-        (inputFieldEvent)="updateValueFilterSearchText($event)"
-      ></app-log-filters>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <div style="height: 50vh;">
+<div class="log-viewer-wrapper">
+  <div class="log-viewer-filters">
+    <app-log-filters
+      [dropdownName]="'Log Level Picker'"
+      [optionsList]="logLevelsList"
+      [inputName]="'Key Filter'"
+      (dropDownItemEvent)="updateLogLevelFilter($event)"
+      (inputFieldEvent)="updateKeyFilterSearchText($event)"
+    ></app-log-filters>
+    <app-log-filters
+      [dropdownName]="'Log Key Picker'"
+      [optionsList]="logKeyList"
+      [inputName]="'Value Filter'"
+      (dropDownItemEvent)="updateLogKeyFilter($event)"
+      (inputFieldEvent)="updateValueFilterSearchText($event)"
+    ></app-log-filters>
+  </div>
+
+  <div class="log-viewer">
     <app-log-area [logLines]="filteredLogLines"></app-log-area>
   </div>
 </div>

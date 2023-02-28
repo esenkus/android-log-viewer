@@ -1,12 +1,4 @@
-<div class="container">
-  <h1 class="title">
-    {{ "PAGES.HOME.TITLE" | translate }}
-  </h1>
-
-  <div>hi :)</div>
-
-  <app-log-viewer
-    [rawLogLines]="rawLogLines"
-    [additionalLogLine]="additionalLogLine"
-  ></app-log-viewer>
-</div>
+<app-log-viewer
+  [rawLogLines]="rawLogLines"
+  [additionalLogLine]="additionalLogLine"
+></app-log-viewer>

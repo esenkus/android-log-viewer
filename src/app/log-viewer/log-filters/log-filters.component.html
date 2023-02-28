@@ -1,30 +1,26 @@
-<mat-form-field>
-  <mat-label>{{ dropdownName }}</mat-label>
-  <mat-select [formControl]="dropDownFormControl" multiple>
-    <mat-select-trigger>
-      {{dropDownFormControl.value?.[0] || ''}}
-      <span *ngIf="(dropDownFormControl.value?.length || 0) > 1">
-        (+{{ (dropDownFormControl.value?.length || 0) - 1 }}
-        {{ dropDownFormControl.value?.length === 2 ? "other" : "others" }})
-      </span>
-    </mat-select-trigger>
-    <mat-option
-      *ngFor="let option of optionsList"
-      (click)="updateDropDownSelection(option)"
-    >
-      {{ option }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="dropdown">
+  <button>{{ dropdownName }}</button>
+  <div class="dropdown-options">
+    <ul>
+      <li>
+        <input type="text" placeholder="Search" />
+      </li>
+      <li
+        *ngFor="let option of optionsList"
+        (click)="updateDropDownSelection(option)"
+      >
+        <label><input type="checkbox" />{{ option }}</label>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<form>
-  <mat-form-field>
-    <mat-label>{{ inputName }}</mat-label>
-    <input
-      type="text"
-      matInput
-      [formControl]="textInputFormControl"
-      (input)="updateInputFieldText($event.target.value)"
-    />
-  </mat-form-field>
-</form>
+<div class="textInput">
+  <input
+    placeholder="{{ inputName }}"
+    type="text"
+    matInput
+    [formControl]="textInputFormControl"
+    (input)="updateInputFieldText($event.target.value)"
+  />
+</div>

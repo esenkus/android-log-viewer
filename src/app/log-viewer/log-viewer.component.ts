@@ -27,7 +27,7 @@ export class LogViewerComponent {
 
   // Pass data to log-filters
   logLevelsList = Object.values(LogLevel).filter(v => isNaN(Number(v)));
-  logKeyList: string[] = ['test1', 'test2'];
+  logKeyList = new Set();
 
   // Receive data from log-filters
 
@@ -36,7 +36,9 @@ export class LogViewerComponent {
   @Input()
   public set rawLogLines(log: string[]) {
     log.map(line => {
-      this.allLogLines.push(this.service.logFromString(line));
+      const logLine = this.service.logFromString(line);
+      this.allLogLines.push(logLine);
+      this.logKeyList.add(logLine.logKey);
     });
     this.reapplyAllFilters();
   }
@@ -65,6 +67,7 @@ export class LogViewerComponent {
   }
 
   private updateLogLevelFilter(value: string) {
+    console.log(value);
     if (!this.selectedLogLevels.includes(value)) {
       this.selectedLogLevels.push(value);
     } else {
@@ -74,11 +77,13 @@ export class LogViewerComponent {
 
   private updateKeyFilterSearchText(value: string) {
     console.log(value);
+
     this.keyFilterInputText = value;
   }
 
   private updateLogKeyFilter(value: string) {
     console.log(value);
+
     if (!this.selectedLogKeys.includes(value)) {
       this.selectedLogKeys.push(value);
     } else {
@@ -88,6 +93,7 @@ export class LogViewerComponent {
 
   private updateValueFilterSearchText(value: string) {
     console.log(value);
+
     this.valueFilterInputText = value;
   }
 }

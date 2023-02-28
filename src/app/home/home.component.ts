@@ -52,7 +52,27 @@ export class HomeComponent implements OnInit {
     '02-20 17:09:01.325  6294  6309  E  TestRunner:              at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)',
     '02-20 17:09:01.325  6294  6309  E  TestRunner:              at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)',
     '02-20 17:09:01.325  6294  6309  E  TestRunner:              at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)',
-    '02-20 17:09:01.325  6294  6309  E  TestRunner:              at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)'
+    '02-20 17:09:01.325  6294  6309  E  TestRunner:              at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)',
+    '02-20 17:08:38.204  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #1 Completed in 257 ms',
+    '02-20 17:08:38.206  6294  6309 A SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #3 Started.',
+    '02-20 17:08:38.226  6294  6309 A SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #3 Completed in 21 ms',
+    '02-20 17:08:38.227  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #4 Started.',
+    '02-20 17:08:38.232  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #4 Completed in 5 ms',
+    '02-20 17:08:38.233  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #5 Started.',
+    '02-20 17:08:38.258  6294  6309 V SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #5 Completed in 25 ms',
+    '02-20 17:08:38.259  6294  6309 V SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #6 Started.',
+    '02-20 17:08:38.338  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #6 Completed in 78 ms',
+    '02-20 17:08:38.338  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #7 Started.',
+    '02-20 17:08:38.204  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #1 Completed in 257 ms',
+    '02-20 17:08:38.206  6294  6309 A SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #3 Started.',
+    '02-20 17:08:38.226  6294  6309 A SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #3 Completed in 21 ms',
+    '02-20 17:08:38.227  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #4 Started.',
+    '02-20 17:08:38.232  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #4 Completed in 5 ms',
+    '02-20 17:08:38.233  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #5 Started.',
+    '02-20 17:08:38.258  6294  6309 V SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #5 Completed in 25 ms',
+    '02-20 17:08:38.259  6294  6309 V SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #6 Started.',
+    '02-20 17:08:38.338  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #6 Completed in 78 ms',
+    '02-20 17:08:38.338  6294  6309 D SECUREDEX: [Instr: androidx.test.runner.AndroidJUnitRunner] [DID Check NonTamper] Dynamic Instrumentation Detection - Frida Detection #7 Started.'
   ];
 
   additionalLogLine: string;
