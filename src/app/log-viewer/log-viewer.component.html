@@ -21,23 +21,6 @@
       ></app-log-filters>
     </mat-grid-tile>
   </mat-grid-list>
-  <p>Remove after implemented</p>
-  <div *ngFor="let item of selectedLogLevels">
-    {{ item }}
-  </div>
-  <div *ngFor="let item of selectedLogKeys">
-    {{ item }}
-  </div>
-  {{ keyFilterInputText }}
-  {{ valueFilterInputText }}
-  <div style="height: 50vh;">
-    <app-log-area [logLines]="logLines"></app-log-area>
-  </div>
-  <div *ngFor="let item of selectedLogKeys">
-    {{ item }}
-  </div>
-  {{ keyFilterInputText }}
-  {{ valueFilterInputText }}
   <div style="height: 50vh;">
     <app-log-area [logLines]="logLines"></app-log-area>
   </div>
