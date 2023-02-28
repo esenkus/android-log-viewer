@@ -15,9 +15,6 @@ export class LogFiltersComponent {
 
   @Output() inputFieldEvent = new EventEmitter<string>();
 
-  // @Input() beverage = 'Tea';
-  @Output() newBeverageEvent = new EventEmitter<string>();
-
   dropDownFormControl = new FormControl('');
   textInputFormControl = new FormControl();
 
