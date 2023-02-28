@@ -11,37 +11,34 @@ import { LogViewerService } from './log-viewer.service';
 export class LogViewerComponent {
   allLogLines: LogLine[] = [];
   filteredLogLines: LogLine[] = [];
-  logLevelFilters: LogLevel[] = [
-    LogLevel.assert,
-    LogLevel.debug,
-    LogLevel.error,
-    LogLevel.info,
-    LogLevel.verbose,
-    LogLevel.warning
-  ];
-  selectedLogLevels: string[] = [];
-  selectedLogKeys: string[] = [];
-  keyFilterInputText: string;
-  valueFilterInputText: string;
-  logLines: LogLine[] = [];
 
-  // Pass data to log-filters
-  logLevelsList = Object.values(LogLevel).filter(v => isNaN(Number(v)));
-  logKeyList: string[] = ['test1', 'test2'];
+  possibleLogLevelValues: string[] = Object.values(LogLevel)
+    .filter(v => isNaN(Number(v)))
+    .map(v => '' + v);
+  selectedLogLevels: Set<LogLevel> = new Set(
+    this.possibleLogLevelValues.map(v => LogLevel[v])
+  );
 
-  // Receive data from log-filters
+  possibleLogKeyValues: string[] = [];
+  selectedLogKeys: Set<string> = new Set();
+  priorityKeyFilters: string[] = [];
+
+  valueFilter: string;
 
   constructor(private service: LogViewerService) {}
 
   @Input()
   public set rawLogLines(log: string[]) {
     this.allLogLines = [];
-    this.filteredLogLines = [];
     log
       .filter(line => line.length !== 0)
       .map(line => {
         this.allLogLines.push(this.service.logFromString(line));
       });
+    this.selectedLogKeys = new Set(
+      this.allLogLines.map(logLine => logLine.logKey)
+    );
+    this.possibleLogKeyValues = Array.from(this.selectedLogKeys.values());
     this.reapplyAllFilters();
   }
 
@@ -57,40 +54,56 @@ export class LogViewerComponent {
   }
 
   public updateLogLevelFilter(value: string) {
-    if (!this.selectedLogLevels.includes(value)) {
-      this.selectedLogLevels.push(value);
+    const logLevel = LogLevel[value];
+    if (!this.selectedLogLevels.has(logLevel)) {
+      this.selectedLogLevels.add(logLevel);
     } else {
-      this.selectedLogLevels = this.selectedLogLevels.filter(e => e !== value);
+      this.selectedLogLevels.delete(logLevel);
     }
+    this.reapplyAllFilters();
   }
 
   public updateKeyFilterSearchText(value: string) {
-    console.log(value);
-    this.keyFilterInputText = value;
+    this.priorityKeyFilters = value ? value.split(' ') : [];
+    this.reapplyAllFilters();
   }
 
   public updateLogKeyFilter(value: string) {
-    console.log(value);
-    if (!this.selectedLogKeys.includes(value)) {
-      this.selectedLogKeys.push(value);
+    if (!this.selectedLogKeys.has(value)) {
+      this.selectedLogKeys.add(value);
     } else {
-      this.selectedLogKeys = this.selectedLogKeys.filter(e => e !== value);
+      this.selectedLogKeys.delete(value);
     }
+    this.reapplyAllFilters();
   }
 
-  public updateValueFilterSearchText(value: string) {
-    console.log(value);
-    this.valueFilterInputText = value;
+  public updateLogValueFilter(value: string) {
+    this.valueFilter = value;
+    this.reapplyAllFilters();
   }
 
   private reapplyAllFilters() {
+    this.filteredLogLines = [];
+    console.log('reapplying filters:');
+    console.log(this.selectedLogLevels);
+    console.log(this.selectedLogKeys);
+    console.log(this.priorityKeyFilters);
+    console.log(this.valueFilter);
     this.allLogLines.forEach(logLine =>
       this.checkAndApplyLogLineFilter(logLine)
     );
   }
 
   private checkAndApplyLogLineFilter(logLine: LogLine) {
-    if (this.service.shouldLogLineBeShown(logLine, this.logLevelFilters, [])) {
+    if (
+      this.service.shouldLogLineBeShown(
+        logLine,
+        this.selectedLogLevels,
+        this.selectedLogKeys,
+        this.priorityKeyFilters,
+        this.valueFilter
+      )
+    ) {
       this.filteredLogLines.push(logLine);
     }
   }

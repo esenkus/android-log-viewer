@@ -10,7 +10,7 @@ export class LogFiltersComponent {
   @Input() dropdownName = '';
   @Input() inputName = '';
 
-  @Input() optionsList = [];
+  @Input() optionsList: string[] = [];
   @Output() dropDownItemEvent = new EventEmitter<string>();
 
   @Output() inputFieldEvent = new EventEmitter<string>();
@@ -18,14 +18,13 @@ export class LogFiltersComponent {
   dropDownFormControl = new FormControl('');
   textInputFormControl = new FormControl();
 
-  logLevelsList: string[] = this.optionsList;
   searchPhrase: string[] = [];
 
-  updateDropDownSelection(value: string) {
-    this.dropDownItemEvent.emit(value);
+  public updateDropDownSelection(event) {
+    this.dropDownItemEvent.emit(event);
   }
 
-  updateInputFieldText(event) {
+  public updateInputFieldText(event) {
     this.inputFieldEvent.emit(event.target.value);
   }
 }
