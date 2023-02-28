@@ -35,9 +35,13 @@ export class LogViewerComponent {
 
   @Input()
   public set rawLogLines(log: string[]) {
-    log.map(line => {
-      this.allLogLines.push(this.service.logFromString(line));
-    });
+    this.allLogLines = [];
+    this.filteredLogLines = [];
+    log
+      .filter(line => line.length !== 0)
+      .map(line => {
+        this.allLogLines.push(this.service.logFromString(line));
+      });
     this.reapplyAllFilters();
   }
 
@@ -52,6 +56,33 @@ export class LogViewerComponent {
     this.checkAndApplyLogLineFilter(logLine);
   }
 
+  public updateLogLevelFilter(value: string) {
+    if (!this.selectedLogLevels.includes(value)) {
+      this.selectedLogLevels.push(value);
+    } else {
+      this.selectedLogLevels = this.selectedLogLevels.filter(e => e !== value);
+    }
+  }
+
+  public updateKeyFilterSearchText(value: string) {
+    console.log(value);
+    this.keyFilterInputText = value;
+  }
+
+  public updateLogKeyFilter(value: string) {
+    console.log(value);
+    if (!this.selectedLogKeys.includes(value)) {
+      this.selectedLogKeys.push(value);
+    } else {
+      this.selectedLogKeys = this.selectedLogKeys.filter(e => e !== value);
+    }
+  }
+
+  public updateValueFilterSearchText(value: string) {
+    console.log(value);
+    this.valueFilterInputText = value;
+  }
+
   private reapplyAllFilters() {
     this.allLogLines.forEach(logLine =>
       this.checkAndApplyLogLineFilter(logLine)
@@ -62,32 +93,5 @@ export class LogViewerComponent {
     if (this.service.shouldLogLineBeShown(logLine, this.logLevelFilters, [])) {
       this.filteredLogLines.push(logLine);
     }
-  }
-
-  private updateLogLevelFilter(value: string) {
-    if (!this.selectedLogLevels.includes(value)) {
-      this.selectedLogLevels.push(value);
-    } else {
-      this.selectedLogLevels = this.selectedLogLevels.filter(e => e !== value);
-    }
-  }
-
-  private updateKeyFilterSearchText(value: string) {
-    console.log(value);
-    this.keyFilterInputText = value;
-  }
-
-  private updateLogKeyFilter(value: string) {
-    console.log(value);
-    if (!this.selectedLogKeys.includes(value)) {
-      this.selectedLogKeys.push(value);
-    } else {
-      this.selectedLogKeys = this.selectedLogKeys.filter(e => e !== value);
-    }
-  }
-
-  private updateValueFilterSearchText(value: string) {
-    console.log(value);
-    this.valueFilterInputText = value;
   }
 }
