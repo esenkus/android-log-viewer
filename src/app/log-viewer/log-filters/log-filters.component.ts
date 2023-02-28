@@ -25,7 +25,7 @@ export class LogFiltersComponent {
     this.dropDownItemEvent.emit(value);
   }
 
-  updateInputFieldText(value: string) {
-    this.inputFieldEvent.emit(value);
+  updateInputFieldText(event) {
+    this.inputFieldEvent.emit(event.target.value);
   }
 }
