@@ -28,24 +28,36 @@ export class LogViewerService {
 
   public shouldLogLineBeShown(
     logLine: LogLine,
-    logLevelFilters: LogLevel[],
-    keyFilters: string[],
+    logLevelFilters: Set<LogLevel>,
+    keyFilters: Set<string>,
     priorityKeyFilters: string[] = [],
     valueFilter: string = ''
   ): boolean {
-    if (!logLevelFilters.includes(logLine.logLevel)) {
+    if (!logLevelFilters.has(logLine.logLevel)) {
       return false;
+    }
+    if (priorityKeyFilters.length) {
+      const contains = priorityKeyFilters
+        .filter(priorityKeyFilter => priorityKeyFilter.length)
+        .map(priorityKeyFilter => priorityKeyFilter.toLowerCase())
+        .some(priorityKeyFilter =>
+          logLine.logKey.toLowerCase().includes(priorityKeyFilter)
+        );
+      if (!contains) {
+        return false;
+      }
+    }
+    // skip simple key filters if priority ones are defined
+    // TODO: think if it's worth doing so
+    if (!priorityKeyFilters.length) {
+      if (keyFilters.size && !keyFilters.has(logLine.logKey)) {
+        return false;
+      }
     }
     if (
-      priorityKeyFilters.length &&
-      !priorityKeyFilters.includes(logLine.logKey)
+      valueFilter.length &&
+      !logLine.logMessage.toLowerCase().includes(valueFilter.toLowerCase())
     ) {
-      return false;
-    }
-    if (keyFilters.length && !keyFilters.includes(logLine.logKey)) {
-      return false;
-    }
-    if (valueFilter.length && !valueFilter.includes(logLine.logMessage)) {
       return false;
     }
 
