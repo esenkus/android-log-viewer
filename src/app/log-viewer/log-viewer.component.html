@@ -30,7 +30,15 @@
   </div>
   {{ keyFilterInputText }}
   {{ valueFilterInputText }}
-  <!-- <div style="height: 50vh;">
+  <div style="height: 50vh;">
     <app-log-area [logLines]="logLines"></app-log-area>
-  </div> -->
+  </div>
+  <div *ngFor="let item of selectedLogKeys">
+    {{ item }}
+  </div>
+  {{ keyFilterInputText }}
+  {{ valueFilterInputText }}
+  <div style="height: 50vh;">
+    <app-log-area [logLines]="logLines"></app-log-area>
+  </div>
 </div>

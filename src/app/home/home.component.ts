@@ -55,9 +55,17 @@ export class HomeComponent implements OnInit {
     '02-20 17:09:01.325  6294  6309  E  TestRunner:              at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)'
   ];
 
+  additionalLogLine: string;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     console.log('HomeComponent INIT');
+
+    for (let i = 1; i <= 10; i++) {
+      setTimeout(() => {
+        this.additionalLogLine = `02-20 17:08:37.988  6294  6299 I zygote64: After code cache collection, code=176KB, data=${i}KB`;
+      }, i * 2000);
+    }
   }
 }
