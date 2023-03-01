@@ -25,6 +25,6 @@ export class LogFiltersComponent {
   }
 
   public updateInputFieldText(event) {
-    this.inputFieldEvent.emit(event);
+    this.inputFieldEvent.emit(event.target.value);
   }
 }
