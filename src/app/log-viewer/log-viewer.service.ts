@@ -5,20 +5,78 @@ import { LogLevel, LogLine } from './domain/Interfaces';
   providedIn: 'root'
 })
 export class LogViewerService {
-  constructor() { }
+  constructor() {}
 
   public logFromString(log: string): LogLine {
-    if (log.startsWith('---') || log.startsWith('  ')) {
+    try {
+      return this.tryToParseLogLine(log);
+    } catch (ex) {
+      const logLevel = LogLevel.assert;
       return {
-        date: '1990-01-01',
-        time: '00:00',
-        mainProcessId: 0,
-        workerProcessId: 123,
-        logLevel: LogLevel.info,
+        date: '00-00',
+        time: '00:00:00.000',
+        mainProcessId: 9999,
+        workerProcessId: 9999,
+        logLevel,
+        logKey: 'ParserError',
+        logMessage: 'Failed to parse a log line: ' + log,
+        color: this.getColorFromLogLevel(logLevel),
+        logLevelString: this.logLevelToString(logLevel)
+      };
+    }
+  }
+
+  public shouldLogLineBeShown(
+    logLine: LogLine,
+    logLevelFilters: Set<LogLevel>,
+    keyFilters: Set<string>,
+    priorityKeyFilters: string[] = [],
+    valueFilter: string = ''
+  ): boolean {
+    if (!logLevelFilters.has(logLine.logLevel)) {
+      return false;
+    }
+    if (priorityKeyFilters.length) {
+      const contains = priorityKeyFilters
+        .filter(priorityKeyFilter => priorityKeyFilter.length)
+        .map(priorityKeyFilter => priorityKeyFilter.toLowerCase())
+        .some(priorityKeyFilter =>
+          logLine.logKey.toLowerCase().includes(priorityKeyFilter)
+        );
+      if (!contains) {
+        return false;
+      }
+    }
+    // skip simple key filters if priority ones are defined
+    // TODO: think if it's worth doing so
+    if (!priorityKeyFilters.length) {
+      if (keyFilters.size && !keyFilters.has(logLine.logKey)) {
+        return false;
+      }
+    }
+    if (
+      valueFilter.length &&
+      !logLine.logMessage.toLowerCase().includes(valueFilter.toLowerCase())
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  private tryToParseLogLine(log: string): LogLine {
+    if (log.startsWith('---') || log.startsWith('  ')) {
+      const customMessageLogLevel = LogLevel.info;
+      return {
+        date: '00-00',
+        time: '00:00:00.000',
+        mainProcessId: 9999,
+        workerProcessId: 9999,
+        logLevel: customMessageLogLevel,
         logKey: 'AndroidRuntime',
         logMessage: log,
-        color: this.getColorFromLogLevel(LogLevel.info),
-        logLevelString: this.logLevelToString(LogLevel.info)
+        color: this.getColorFromLogLevel(customMessageLogLevel),
+        logLevelString: this.logLevelToString(customMessageLogLevel)
       };
     }
 
@@ -51,8 +109,9 @@ export class LogViewerService {
       logLevel = this.getLogLevel(splitLog[4]);
       logKey = splitLog[5].replace(':', '');
     }
+    const logMessageStartIndex = splitLog[6] === ':' ? 7 : 6;
     const logMessage = splitLog
-      .slice(6)
+      .slice(logMessageStartIndex)
       .join(' ')
       .trim();
     return {
@@ -68,32 +127,6 @@ export class LogViewerService {
     };
   }
 
-  public shouldLogLineBeShown(
-    logLine: LogLine,
-    logLevelFilters: LogLevel[],
-    keyFilters: string[],
-    priorityKeyFilters: string[] = [],
-    valueFilter: string = ''
-  ): boolean {
-    if (!logLevelFilters.includes(logLine.logLevel)) {
-      return false;
-    }
-    if (
-      priorityKeyFilters.length &&
-      !priorityKeyFilters.includes(logLine.logKey)
-    ) {
-      return false;
-    }
-    if (keyFilters.length && !keyFilters.includes(logLine.logKey)) {
-      return false;
-    }
-    if (valueFilter.length && !valueFilter.includes(logLine.logMessage)) {
-      return false;
-    }
-
-    return true;
-  }
-
   private getColorFromLogLevel(logLevel: LogLevel): string {
     switch (logLevel) {
       case LogLevel.debug:
@@ -103,11 +136,9 @@ export class LogViewerService {
       case LogLevel.verbose:
         return 'orange';
       case LogLevel.warning:
-        return 'brown';
       case LogLevel.error:
-        return 'red';
       case LogLevel.assert:
-        return 'darkred';
+        return 'red';
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -76,6 +77,8 @@ export class HomeComponent implements OnInit {
   ];
 
   additionalLogLine: string;
+  logInputText: string;
+  showLogInputDialog = false;
 
   constructor(private router: Router) {}
 
@@ -87,5 +90,40 @@ export class HomeComponent implements OnInit {
         this.additionalLogLine = `02-20 17:08:37.988  6294  6299 I zygote64: After code cache collection, code=176KB, data=${i}KB`;
       }, i * 2000);
     }
+  }
+
+  public loadLogFromFile() {
+    document.querySelector('input').click();
+  }
+
+  public openLogInputDialog() {
+    this.showLogInputDialog = true;
+  }
+
+  public closeLogInputDialog() {
+    this.showLogInputDialog = false;
+  }
+
+  public loadLogFromInputDialog() {
+    this.showLogInputDialog = false;
+    if (this.logInputText.length === 0) {
+      return;
+    }
+    // in case the log was copied from the viewer itself
+    const untabbedLines = this.logInputText
+      .trim()
+      .replace(new RegExp('\t', 'g'), ' ');
+    this.rawLogLines = untabbedLines.split('\n');
+    this.logInputText = '';
+  }
+
+  public fileSelected(event) {
+    const file = event.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onload = e => {
+      const fileContent = (fileReader.result as string).trim().split('\n');
+      this.rawLogLines = fileContent;
+    };
+    fileReader.readAsText(file);
   }
 }

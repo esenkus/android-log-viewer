@@ -1,4 +1,26 @@
-<app-log-viewer
-  [rawLogLines]="rawLogLines"
-  [additionalLogLine]="additionalLogLine"
-></app-log-viewer>
+<div class="container">
+  <h1 class="title">
+    {{ "PAGES.HOME.TITLE" | translate }}
+  </h1>
+
+  <div>
+    <button (click)="loadLogFromFile()">
+      Load from file
+      <input type="file" style="display:none" (change)="fileSelected($event)" />
+    </button>
+    <button (click)="openLogInputDialog()">Load from input</button>
+  </div>
+
+  <div *ngIf="showLogInputDialog">
+    <div class="input-dialog" (click)="closeLogInputDialog()"></div>
+    <div class="log-input-dialog">
+      <textarea [(ngModel)]="logInputText"></textarea>
+      <button (click)="loadLogFromInputDialog()">Load</button>
+    </div>
+  </div>
+
+  <app-log-viewer
+    [rawLogLines]="rawLogLines"
+    [additionalLogLine]="additionalLogLine"
+  ></app-log-viewer>
+</div>

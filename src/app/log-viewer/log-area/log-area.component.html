@@ -13,10 +13,13 @@
             <tbody>
               <tr
                 class="log-line"
+                st-select-mode="none"
                 *ngFor="let line of logLines; let i = index"
                 [ngStyle]="{ color: line.color }"
               >
-                <td class="log-column log-line-number">{{ i }}</td>
+                <td class="log-column log-line-number">
+                  {{ i }}
+                </td>
                 <td class="log-column">{{ line.date }}</td>
                 <td class="log-column">{{ line.time }}</td>
                 <td class="log-column">{{ line.mainProcessId }}</td>

@@ -19,6 +19,7 @@
 .log-line-number {
   color: gray;
   text-align: end;
+  user-select: none;
 }
 .overflow-guard {
   overflow: hidden;
