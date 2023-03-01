@@ -5,11 +5,14 @@
       <li>
         <input type="text" placeholder="Search" />
       </li>
-      <li
-        *ngFor="let option of optionsList"
-        (click)="updateDropDownSelection(option)"
-      >
-        <label>{{ option }}</label>
+      <li *ngFor="let option of optionsList">
+        <label
+          ><input
+            type="checkbox"
+            checked
+            (click)="updateDropDownSelection(option)"
+          />{{ option }}</label
+        >
       </li>
     </ul>
   </div>

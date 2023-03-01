@@ -3,16 +3,16 @@
     <app-log-filters
       [dropdownName]="'Log Level Picker'"
       [optionsList]="possibleLogLevelValues"
-      [inputName]="'Key Filter'"
+      [inputName]="'Value Filter'"
+      (inputFieldEvent)="updateLogValueFilter($event)"
       (dropDownItemEvent)="updateLogLevelFilter($event)"
-      (inputFieldEvent)="updateKeyFilterSearchText($event)"
     ></app-log-filters>
     <app-log-filters
       [dropdownName]="'Log Key Picker'"
       [optionsList]="possibleLogKeyValues"
-      [inputName]="'Value Filter'"
+      [inputName]="'Key Filter'"
+      (inputFieldEvent)="updateKeyFilterSearchText($event)"
       (dropDownItemEvent)="updateLogKeyFilter($event)"
-      (inputFieldEvent)="updateLogValueFilter($event)"
     ></app-log-filters>
   </div>
 
