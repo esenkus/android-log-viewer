@@ -20,6 +20,9 @@
     </mat-grid-tile>
   </mat-grid-list>
   <div style="height: 50vh;">
-    <app-log-area [logLines]="filteredLogLines"></app-log-area>
+    <app-log-area
+      [logLines]="filteredLogLines"
+      (additionalLogKeyExcludeEvent)="logKeyExcluded($event)"
+    ></app-log-area>
   </div>
 </div>
