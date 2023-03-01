@@ -1,5 +1,12 @@
 @import "styles.scss";
 
+.container {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .input-dialog {
   position: absolute;
   top: 0;

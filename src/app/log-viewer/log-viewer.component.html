@@ -2,17 +2,17 @@
   <div class="log-viewer-filters">
     <app-log-filters
       [dropdownName]="'Log Level Picker'"
-      [optionsList]="logLevelsList"
+      [optionsList]="possibleLogLevelValues"
       [inputName]="'Key Filter'"
       (dropDownItemEvent)="updateLogLevelFilter($event)"
       (inputFieldEvent)="updateKeyFilterSearchText($event)"
     ></app-log-filters>
     <app-log-filters
       [dropdownName]="'Log Key Picker'"
-      [optionsList]="logKeyList"
+      [optionsList]="possibleLogKeyValues"
       [inputName]="'Value Filter'"
       (dropDownItemEvent)="updateLogKeyFilter($event)"
-      (inputFieldEvent)="updateValueFilterSearchText($event)"
+      (inputFieldEvent)="updateLogValueFilter($event)"
     ></app-log-filters>
   </div>
 

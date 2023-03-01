@@ -12,9 +12,6 @@ export class LogViewerComponent {
   allLogLines: LogLine[] = [];
   filteredLogLines: LogLine[] = [];
 
-  // Pass data to log-filters
-  logLevelsList = Object.values(LogLevel).filter(v => isNaN(Number(v)));
-  logKeyList = new Set();
   possibleLogLevelValues: string[] = Object.values(LogLevel)
     .filter(v => isNaN(Number(v)))
     .map(v => '' + v);
@@ -32,11 +29,6 @@ export class LogViewerComponent {
 
   @Input()
   public set rawLogLines(log: string[]) {
-    log.map(line => {
-      const logLine = this.service.logFromString(line);
-      this.allLogLines.push(logLine);
-      this.logKeyList.add(logLine.logKey);
-    });
     this.allLogLines = [];
     log
       .filter(line => line.length !== 0)
