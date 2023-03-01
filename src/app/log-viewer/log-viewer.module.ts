@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Components
 import { LogViewerComponent } from '../log-viewer/log-viewer.component';
 
-
 // Material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,9 +15,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { LogAreaComponent } from './log-area/log-area.component';
 import { LogFiltersComponent } from './log-filters/log-filters.component';
+import { ContextMenuComponent } from './context-menu/context-menu.component';
 
 @NgModule({
-  declarations: [LogViewerComponent, LogFiltersComponent, LogAreaComponent],
+  declarations: [
+    LogViewerComponent,
+    LogFiltersComponent,
+    LogAreaComponent,
+    ContextMenuComponent
+  ],
   imports: [
     BrowserAnimationsModule,
     MatGridListModule,
@@ -30,4 +35,4 @@ import { LogFiltersComponent } from './log-filters/log-filters.component';
   ],
   exports: [CommonModule, SharedModule, LogViewerComponent, LogFiltersComponent]
 })
-export class LogViewerModule { }
+export class LogViewerModule {}

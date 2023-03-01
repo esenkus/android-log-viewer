@@ -18,3 +18,13 @@ export interface LogLine {
   color: string;
   logLevelString: string;
 }
+
+export enum ContextMenuAction {
+  excludeKey
+}
+
+export interface ContextMenuItem {
+  action: ContextMenuAction;
+  text: string;
+  data: any;
+}

@@ -82,6 +82,11 @@ export class LogViewerComponent {
     this.reapplyAllFilters();
   }
 
+  public logKeyExcluded(event: string) {
+    this.selectedLogKeys.delete(event);
+    this.reapplyAllFilters();
+  }
+
   private reapplyAllFilters() {
     this.filteredLogLines = [];
     console.log('reapplying filters:');

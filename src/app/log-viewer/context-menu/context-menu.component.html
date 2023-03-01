@@ -1,0 +1,11 @@
+<ng-container>
+  <div class="context-menu">
+    <div
+      class="context-menu-option"
+      *ngFor="let contextMenuItem of contextMenuItems"
+      (click)="contextMenuItemSelected(contextMenuItem)"
+    >
+      {{ contextMenuItem.text }}
+    </div>
+  </div>
+</ng-container>

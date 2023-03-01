@@ -1,0 +1,16 @@
+@import "../styles.scss";
+
+.context-menu {
+  background-color: $primary-background;
+  border-color: $secondary-background;
+  border-radius: 1px;
+  border-style: solid;
+  color: white;
+}
+.context-menu-option {
+  padding: 5px;
+  background-color: $primary-background;
+  &:hover {
+    -webkit-filter: brightness(120%);
+  }
+}
