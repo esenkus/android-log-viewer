@@ -4,10 +4,15 @@
     <div class="dropdown-options">
       <ul>
         <li>
-          <input type="text" placeholder="Search" class="dropdownSearch" />
+          <input
+            type="text"
+            placeholder="Search"
+            class="dropdownSearch"
+            [formControl]="dropDownSearchFormControl"
+          />
         </li>
         <li *ngFor="let option of optionsList">
-          <label
+          <label *ngIf="shouldBeShown(option)"
             ><input
               type="checkbox"
               checked

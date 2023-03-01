@@ -51,10 +51,6 @@ button {
   padding: 5px 50px;
   font-size: $font-size;
   cursor: pointer;
-
-  &:hover {
-    // background-color: #073f42;
-  }
 }
 
 .dropdown-options {
@@ -78,10 +74,10 @@ button {
     width: 300px;
     display: block;
     text-decoration: none;
-    // margin: 5px 40px;
     font-size: $font-size;
+
     label {
-      display: block;
+      display: flex;
       padding: 5px 40px;
     }
     .dropdownSearch {
