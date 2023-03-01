@@ -1,25 +1,23 @@
-<div class="log-viewer-wrapper">
-  <div class="log-viewer-filters">
-    <app-log-filters
-      [dropdownName]="'Log Level Picker'"
-      [optionsList]="possibleLogLevelValues"
-      [inputName]="'Value Filter'"
-      (inputFieldEvent)="updateLogValueFilter($event)"
-      (dropDownItemEvent)="updateLogLevelFilter($event)"
-    ></app-log-filters>
-    <app-log-filters
-      [dropdownName]="'Log Key Picker'"
-      [optionsList]="possibleLogKeyValues"
-      [inputName]="'Key Filter'"
-      (inputFieldEvent)="updateKeyFilterSearchText($event)"
-      (dropDownItemEvent)="updateLogKeyFilter($event)"
-    ></app-log-filters>
-  </div>
+<div class="log-viewer-filters">
+  <app-log-filters
+    [dropdownName]="'Log Level Picker'"
+    [optionsList]="possibleLogLevelValues"
+    [inputName]="'Value Filter'"
+    (inputFieldEvent)="updateLogValueFilter($event)"
+    (dropDownItemEvent)="updateLogLevelFilter($event)"
+  ></app-log-filters>
+  <app-log-filters
+    [dropdownName]="'Log Key Picker'"
+    [optionsList]="possibleLogKeyValues"
+    [inputName]="'Key Filter'"
+    (inputFieldEvent)="updateKeyFilterSearchText($event)"
+    (dropDownItemEvent)="updateLogKeyFilter($event)"
+  ></app-log-filters>
+</div>
 
-  <div class="log-viewer">
-    <app-log-area
-      [logLines]="filteredLogLines"
-      (additionalLogKeyExcludeEvent)="logKeyExcluded($event)"
-    ></app-log-area>
-  </div>
+<div class="log-viewer">
+  <app-log-area
+    [logLines]="filteredLogLines"
+    (additionalLogKeyExcludeEvent)="logKeyExcluded($event)"
+  ></app-log-area>
 </div>
