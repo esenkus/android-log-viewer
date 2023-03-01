@@ -23,10 +23,10 @@
 }
 .overflow-guard {
   overflow: hidden;
-  max-height: 50vh;
+  height: calc(95vh - 145px);
 }
 .scrollable {
-  overflow: scroll;
+  overflow: auto;
   height: 100%;
 }
 .log-area-content {
