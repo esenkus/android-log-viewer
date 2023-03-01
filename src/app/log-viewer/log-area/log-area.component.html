@@ -9,6 +9,12 @@
         <!-- lines content -->
         <div class="log-area-content">
           <!-- single line -->
+          <app-context-menu
+            *ngIf="showContextMenu"
+            [ngStyle]="getContextMenuStyle()"
+            [contextMenuItems]="contextMenuItems"
+            (contextMenuItemSelectedEvent)="contextMenuItemSelected($event)"
+          ></app-context-menu>
           <table>
             <tbody>
               <tr
@@ -16,6 +22,7 @@
                 st-select-mode="none"
                 *ngFor="let line of logLines; let i = index"
                 [ngStyle]="{ color: line.color }"
+                (contextmenu)="displayContextMenu($event, line); (false)"
               >
                 <td class="log-column log-line-number">
                   {{ i }}
