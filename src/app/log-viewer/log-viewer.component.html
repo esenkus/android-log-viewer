@@ -16,5 +16,8 @@
 </div>
 
 <div class="log-viewer">
-  <app-log-area [logLines]="filteredLogLines"></app-log-area>
+  <app-log-area
+    [logLines]="filteredLogLines"
+    (additionalLogKeyExcludeEvent)="logKeyExcluded($event)"
+  ></app-log-area>
 </div>
