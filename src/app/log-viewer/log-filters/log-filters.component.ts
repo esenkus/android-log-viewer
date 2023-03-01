@@ -17,6 +17,7 @@ export class LogFiltersComponent {
 
   dropDownFormControl = new FormControl('');
   textInputFormControl = new FormControl();
+  dropDownSearchFormControl = new FormControl('');
 
   searchPhrase: string[] = [];
 
@@ -26,5 +27,11 @@ export class LogFiltersComponent {
 
   public updateInputFieldText(event) {
     this.inputFieldEvent.emit(event.target.value);
+  }
+
+  public shouldBeShown(option) {
+    return option
+      .toLowerCase()
+      .includes(this.dropDownSearchFormControl.value.toLowerCase());
   }
 }
