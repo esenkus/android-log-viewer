@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
+import { ElectronService } from '../core/services';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [ElectronService]
 })
 export class HomeComponent implements OnInit {
   rawLogLines: string[] = [
@@ -80,7 +83,12 @@ export class HomeComponent implements OnInit {
   logInputText: string;
   showLogInputDialog = false;
 
-  constructor(private router: Router) {}
+  searchFormControl = new FormControl('');
+
+  constructor(
+    private router: Router,
+    public electronService: ElectronService
+  ) {}
 
   ngOnInit(): void {
     console.log('HomeComponent INIT');
@@ -89,6 +97,17 @@ export class HomeComponent implements OnInit {
       setTimeout(() => {
         this.additionalLogLine = `02-20 17:08:37.988  6294  6299 I zygote64: After code cache collection, code=176KB, data=${i}KB`;
       }, i * 2000);
+    }
+
+    if (this.electronService.isElectron) {
+      this.searchFormControl.valueChanges.subscribe(newValue => {
+        console.log(newValue);
+        if (!newValue) {
+          return;
+        }
+        // TODO: somehow bring back focus to the form, do not search in the search bar itself
+        this.electronService.ipcRenderer.send('search-text', newValue);
+      });
     }
   }
 

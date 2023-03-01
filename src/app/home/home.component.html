@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="search-bar" *ngIf="electronService.isElectron">
+    <input type="text" [formControl]="searchFormControl" />
+  </div>
   <div>
     <button (click)="loadLogFromFile()">
       Load from file
