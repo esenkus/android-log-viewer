@@ -9,7 +9,7 @@
         *ngFor="let option of optionsList"
         (click)="updateDropDownSelection(option)"
       >
-        <label><input type="checkbox" />{{ option }}</label>
+        <label>{{ option }}</label>
       </li>
     </ul>
   </div>
@@ -17,10 +17,9 @@
 
 <div class="textInput">
   <input
+    [formControl]="textInputFormControl"
     placeholder="{{ inputName }}"
     type="text"
-    matInput
-    [formControl]="textInputFormControl"
     (input)="updateInputFieldText($event.target.value)"
   />
 </div>
