@@ -23,7 +23,7 @@
 }
 .overflow-guard {
   overflow: hidden;
-  height: 50vh;
+  max-height: 50vh;
 }
 .scrollable {
   overflow: scroll;

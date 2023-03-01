@@ -1,52 +1,95 @@
+$font-size: 18px;
+$font-color: grey;
+$border-radius: 0px;
+
+.filterFields {
+  display: block;
+  justify-content: space-between;
+  flex-direction: column;
+  color: $font-color;
+}
+
+.filterFields,
+.textInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.textInput {
+  margin: 10px 0;
+  input {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: $border-radius;
+    border: none;
+    text-align: center;
+    font-size: $font-size;
+
+    &:focus-visible,
+    :focus {
+      border: none;
+    }
+
+    &::placeholder {
+      color: $font-color;
+    }
+  }
+}
+
 .dropdown {
   display: inline-block;
   position: relative;
 }
 
 button {
+  max-width: 100%;
+  width: 300px;
+  color: $font-color;
   border: none;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 18px;
+  border-radius: $border-radius;
+  padding: 5px 50px;
+  font-size: $font-size;
   cursor: pointer;
 
   &:hover {
-    background-color: #073f42;
+    // background-color: #073f42;
   }
 }
 
 .dropdown-options {
+  max-width: 300px;
   display: none;
   position: absolute;
-  overflow: auto;
+  // overflow: auto;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: $border-radius;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
 
   ul {
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 50vh;
   }
 
   li {
+    align-items: center;
+    width: 300px;
     display: block;
-    color: #000000;
-    padding: 5px;
     text-decoration: none;
-    padding: 20px 40px;
-    font-size: 18px;
+    padding: 5px 40px;
+    font-size: $font-size;
 
     &:hover {
-      color: #0a0a23;
-      background-color: #073f42;
-      border-radius: 5px;
+      border-radius: $border-radius;
       cursor: pointer;
-      font-size: 18px;
+      font-size: $font-size;
     }
 
     input {
       border: none;
-      font-size: 18px;
-      color: #0a0a23;
+      font-size: $font-size;
     }
   }
 }

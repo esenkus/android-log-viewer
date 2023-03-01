@@ -1,28 +1,30 @@
-<div class="dropdown">
-  <button>{{ dropdownName }}</button>
-  <div class="dropdown-options">
-    <ul>
-      <li>
-        <input type="text" placeholder="Search" />
-      </li>
-      <li *ngFor="let option of optionsList">
-        <label
-          ><input
-            type="checkbox"
-            checked
-            (click)="updateDropDownSelection(option)"
-          />{{ option }}</label
-        >
-      </li>
-    </ul>
+<div class="filterFields">
+  <div class="dropdown">
+    <button>{{ dropdownName }}</button>
+    <div class="dropdown-options">
+      <ul>
+        <li>
+          <input type="text" placeholder="Search" class="dropdownSearch" />
+        </li>
+        <li *ngFor="let option of optionsList">
+          <label
+            ><input
+              type="checkbox"
+              checked
+              (click)="updateDropDownSelection(option)"
+            />{{ option }}</label
+          >
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="textInput">
-  <input
-    [formControl]="textInputFormControl"
-    placeholder="{{ inputName }}"
-    type="text"
-    (input)="updateInputFieldText($event)"
-  />
+  <div class="textInput">
+    <input
+      [formControl]="textInputFormControl"
+      placeholder="{{ inputName }}"
+      type="text"
+      (input)="updateInputFieldText($event)"
+    />
+  </div>
 </div>
