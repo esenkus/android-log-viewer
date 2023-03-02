@@ -1,10 +1,6 @@
 {
   "name": "android-log-viewer",
   "description": "Android Log viewer with Electron and Angular",
-  "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
-  },
   "version": "0.2.0",
   "main": "main.js",
   "private": true,

@@ -51,8 +51,8 @@ jobs:
             asset_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}.AppImage"
             asset_content_type: application/zip
           - os: windows-latest
-            artifact_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}.exe"
-            asset_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}.exe"
+            artifact_name: "android-log-viewer ${{ needs.Make_GitHub_Release.outputs.version }}.exe"
+            asset_name: "android-log-viewer ${{ needs.Make_GitHub_Release.outputs.version }}.exe"
             asset_content_type: application/exe
           - os: macos-latest
             artifact_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}.dmg"
