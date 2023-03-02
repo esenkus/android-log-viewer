@@ -1,6 +1,6 @@
+/* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-home',

@@ -58,6 +58,7 @@ export class LogAreaComponent {
   public getContextMenuStyle() {
     return {
       position: 'fixed',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'z-index': 2,
       left: `${this.rightClickMenuPositionX}px`,
       top: `${this.rightClickMenuPositionY}px`
