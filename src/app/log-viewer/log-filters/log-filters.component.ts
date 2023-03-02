@@ -39,7 +39,6 @@ export class LogFiltersComponent {
 
   public updateDropDownSelection(event: CheckboxItem) {
     event.checked = !event.checked;
-    console.log(this.checkboxItems);
     this.dropDownItemEvent.emit(event.text);
   }
 

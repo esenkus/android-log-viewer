@@ -55,8 +55,6 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log('HomeComponent INIT');
-
     for (let i = 1; i <= 10; i++) {
       setTimeout(() => {
         this.additionalLogLine = `02-20 17:08:37.988  6294  6299 I zygote64: After code cache collection, code=176KB, data=${i}KB`;
