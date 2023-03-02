@@ -17,13 +17,13 @@
             <span (click)="markAllCheckboxes(false)">Select None</span>
           </div>
         </li>
-        <li *ngFor="let option of optionsList">
-          <label *ngIf="shouldBeShown(option)"
+        <li *ngFor="let checkboxItem of checkboxItems">
+          <label *ngIf="shouldBeShown(checkboxItem.text)"
             ><input
               type="checkbox"
-              (click)="updateDropDownSelection(option)"
-              [checked]="checkboxEnabled"
-            />{{ option }}</label
+              (click)="updateDropDownSelection(checkboxItem.text)"
+              [checked]="checkboxItem.checked"
+            />{{ checkboxItem.text }}</label
           >
         </li>
       </ul>

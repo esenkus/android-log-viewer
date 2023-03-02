@@ -28,3 +28,8 @@ export interface ContextMenuItem {
   text: string;
   data: any;
 }
+
+export interface CheckboxItem {
+  text: string;
+  checked: boolean;
+}
