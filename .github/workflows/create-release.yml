@@ -8,7 +8,6 @@ on:
 jobs:
   Make_GitHub_Release:
     name: Create Release
-    secrets: inherit
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.step_version.outputs.version }}
