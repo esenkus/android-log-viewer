@@ -21,7 +21,7 @@
           <label *ngIf="shouldBeShown(checkboxItem.text)"
             ><input
               type="checkbox"
-              (click)="updateDropDownSelection(checkboxItem.text)"
+              (click)="updateDropDownSelection(checkboxItem)"
               [checked]="checkboxItem.checked"
             />{{ checkboxItem.text }}</label
           >

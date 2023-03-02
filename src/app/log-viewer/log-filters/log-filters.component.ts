@@ -16,7 +16,6 @@ export class LogFiltersComponent {
   @Output() inputFieldEvent = new EventEmitter<string>();
   @Output() allCheckboxChangedEvent = new EventEmitter<boolean>();
 
-  dropDownFormControl = new FormControl('');
   textInputFormControl = new FormControl();
   dropDownSearchFormControl = new FormControl('');
   checkboxItems: CheckboxItem[] = [];
@@ -38,8 +37,10 @@ export class LogFiltersComponent {
       .forEach(checkboxItem => (checkboxItem.checked = false));
   }
 
-  public updateDropDownSelection(event) {
-    this.dropDownItemEvent.emit(event);
+  public updateDropDownSelection(event: CheckboxItem) {
+    event.checked = !event.checked;
+    console.log(this.checkboxItems);
+    this.dropDownItemEvent.emit(event.text);
   }
 
   public updateInputFieldText(event) {
