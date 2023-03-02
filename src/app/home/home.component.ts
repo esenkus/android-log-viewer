@@ -105,7 +105,9 @@ export class HomeComponent implements OnInit {
         if (!newValue) {
           return;
         }
-        // TODO: somehow bring back focus to the form, do not search in the search bar itself
+        // TODO: somehow bring back focus to the form, do not search in the search bar itself,
+        // this link might help: https://stackoverflow.com/questions/72502917/electronjs-findinpage-find-next-result-and-highlight-it
+        // also need to limit search for log-area only. try to do  that in main.ts maybe by class names?
         this.electronService.ipcRenderer.send('search-text', newValue);
       });
     }
