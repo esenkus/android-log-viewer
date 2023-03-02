@@ -44,6 +44,7 @@ jobs:
     needs: Make_GitHub_Release
     name: Build And Upload Release
     runs-on: ${{ matrix.os }}
+    secrets: inherit
     strategy:
       matrix:
         include:
@@ -75,7 +76,7 @@ jobs:
         id: package_version
 
       - name: Secrets And Envirotment
-        uses: timheuer/base64-to-file@v1.1
+        uses: timheuer/base64-to-file@v1.2
         with:
           fileName: "environment.prod.ts"
           fileDir: "./src/environments/"
