@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { CheckboxItem } from '../domain/Interfaces';
 
 @Component({
   selector: 'app-log-filters',
@@ -10,18 +11,32 @@ export class LogFiltersComponent {
   @Input() dropdownName = '';
   @Input() inputName = '';
 
-  @Input() optionsList: string[] = [];
   @Output() dropDownItemEvent = new EventEmitter<string>();
 
   @Output() inputFieldEvent = new EventEmitter<string>();
+  @Output() allCheckboxChangedEvent = new EventEmitter<boolean>();
 
   dropDownFormControl = new FormControl('');
   textInputFormControl = new FormControl();
   dropDownSearchFormControl = new FormControl('');
-
-  checkboxEnabled: boolean | null = true;
+  checkboxItems: CheckboxItem[] = [];
 
   searchPhrase: string[] = [];
+
+  @Input()
+  public set optionsList(options: string[]) {
+    this.checkboxItems = options.map(option => ({
+      text: option,
+      checked: true
+    }));
+  }
+
+  @Input()
+  public set optionUncheckedExternally(option: string) {
+    this.checkboxItems
+      .filter(checkboxItem => checkboxItem.text === option)
+      .forEach(checkboxItem => (checkboxItem.checked = false));
+  }
 
   public updateDropDownSelection(event) {
     this.dropDownItemEvent.emit(event);
@@ -37,7 +52,10 @@ export class LogFiltersComponent {
       .includes(this.dropDownSearchFormControl.value.toLowerCase());
   }
 
-  public markAllCheckboxes(value) {
-    this.checkboxEnabled = value ? true : null;
+  public markAllCheckboxes(value: boolean) {
+    this.checkboxItems.forEach(checkboxItem => {
+      checkboxItem.checked = value;
+    });
+    this.allCheckboxChangedEvent.emit(value);
   }
 }

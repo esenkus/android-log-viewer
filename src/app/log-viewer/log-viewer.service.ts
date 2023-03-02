@@ -50,7 +50,7 @@ export class LogViewerService {
     // skip simple key filters if priority ones are defined
     // TODO: think if it's worth doing so
     if (!priorityKeyFilters.length) {
-      if (keyFilters.size && !keyFilters.has(logLine.logKey)) {
+      if (!keyFilters.has(logLine.logKey)) {
         return false;
       }
     }

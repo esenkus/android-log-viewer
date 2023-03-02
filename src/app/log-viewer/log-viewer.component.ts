@@ -22,6 +22,7 @@ export class LogViewerComponent {
   possibleLogKeyValues: string[] = [];
   selectedLogKeys: Set<string> = new Set();
   priorityKeyFilters: string[] = [];
+  lastManuallyExcludedLogKey: string;
 
   valueFilter: string;
 
@@ -38,7 +39,9 @@ export class LogViewerComponent {
     this.selectedLogKeys = new Set(
       this.allLogLines.map(logLine => logLine.logKey)
     );
-    this.possibleLogKeyValues = Array.from(this.selectedLogKeys.values());
+    this.possibleLogKeyValues = Array.from(
+      this.selectedLogKeys.values()
+    ).sort();
     this.reapplyAllFilters();
   }
 
@@ -84,6 +87,27 @@ export class LogViewerComponent {
 
   public logKeyExcluded(event: string) {
     this.selectedLogKeys.delete(event);
+    this.lastManuallyExcludedLogKey = event;
+    this.reapplyAllFilters();
+  }
+
+  public allLogLevelsSelected(event: boolean) {
+    if (event) {
+      this.selectedLogLevels = new Set(
+        this.possibleLogLevelValues.map(v => LogLevel[v])
+      );
+    } else {
+      this.selectedLogLevels.clear();
+    }
+    this.reapplyAllFilters();
+  }
+
+  public allLogKeysSelected(event: boolean) {
+    if (event) {
+      this.selectedLogKeys = new Set(this.possibleLogKeyValues);
+    } else {
+      this.selectedLogKeys.clear();
+    }
     this.reapplyAllFilters();
   }
 
