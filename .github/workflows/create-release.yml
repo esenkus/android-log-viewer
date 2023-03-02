@@ -77,7 +77,7 @@ jobs:
       - name: Secrets And Envirotment
         uses: timheuer/base64-to-file@v1.1
         with:
-          fileName: "environment.production.ts"
+          fileName: "environment.prod.ts"
           fileDir: "./src/environments/"
           encodedString: ${{ secrets.ANGULAR_ENVIROTMENT_PRODUCTION }}
 
