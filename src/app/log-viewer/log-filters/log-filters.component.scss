@@ -2,127 +2,136 @@ $font-size: 18px;
 $font-color: grey;
 $border-radius: 0px;
 
-input:focus-visible,
-input:focus {
-  outline: none;
-  outline-style: none;
-  box-shadow: none;
-  border-color: transparent;
-}
-
-.filterFields {
-  display: block;
-  justify-content: space-between;
-  flex-direction: column;
-  color: $font-color;
-}
-
-.checkboxStateChange {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  span {
-    max-width: 100%;
-    color: $font-color;
-    border: none;
-    border-radius: $border-radius;
-    font-size: $font-size;
-    cursor: pointer;
-
-    &:hover {
-      border: 1px solid gray;
-    }
-  }
-}
-
-.filterFields,
-.textInput {
+.filter-fields,
+.text-input {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.textInput {
-  margin: 10px 0;
-  input {
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: $border-radius;
-    border: none;
-    text-align: center;
-    font-size: $font-size;
+.filter-fields {
+  display: block;
+  justify-content: space-between;
+  flex-direction: column;
+  color: $font-color;
 
-    &::placeholder {
+  input:focus {
+    outline: none;
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+    color: $font-color;
+  }
+
+  input:checked + label {
+    background-color: #1c6a60;
+  }
+
+  .dropdown {
+    display: inline-block;
+    position: relative;
+
+    button {
+      max-width: 100%;
+      width: 300px;
       color: $font-color;
+      border: none;
+      border-radius: $border-radius;
+      padding: 5px 50px;
+      font-size: $font-size;
+      cursor: pointer;
     }
   }
-}
 
-.dropdown {
-  display: inline-block;
-  position: relative;
-}
-
-button {
-  max-width: 100%;
-  width: 300px;
-  color: $font-color;
-  border: none;
-  border-radius: $border-radius;
-  padding: 5px 50px;
-  font-size: $font-size;
-  cursor: pointer;
-}
-
-.dropdown-options {
-  max-width: 300px;
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  border-radius: $border-radius;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
-
-  ul {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 50vh;
+  .dropdown:hover .dropdown-options {
+    display: block;
   }
 
-  li {
-    align-items: center;
-    width: 300px;
-    display: block;
-    text-decoration: none;
-    font-size: $font-size;
+  .dropdown-options {
+    max-width: 300px;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border-radius: $border-radius;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
 
-    label {
+    .checkbox-state-change {
       display: flex;
-      padding: 5px 40px;
+      flex-direction: row;
+      justify-content: space-around;
 
-      &:hover {
-        border: 1px solid gray;
+      span {
+        max-width: 100%;
+        color: $font-color;
+        border: none;
+        border-radius: $border-radius;
+        font-size: $font-size;
+        cursor: pointer;
+        flex: 1;
+        text-align: center;
+        padding: 5px 0;
+
+        &:hover {
+          background-color: #efefef;
+        }
       }
     }
-    .dropdownSearch {
-      padding: 5px 40px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 50vh;
     }
 
-    &:hover {
-      border-radius: $border-radius;
-      cursor: pointer;
+    li {
+      align-items: center;
+      width: 300px;
+      display: block;
+      text-decoration: none;
       font-size: $font-size;
-    }
 
-    input {
-      border: none;
-      font-size: $font-size;
+      label {
+        display: flex;
+        padding: 5px 40px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #efefef;
+        }
+      }
+      .dropdown-search {
+        padding: 5px 40px;
+      }
+
+      &:hover {
+        border-radius: $border-radius;
+        cursor: pointer;
+        font-size: $font-size;
+      }
+
+      input {
+        border: none;
+        font-size: $font-size;
+      }
     }
   }
-}
 
-.dropdown:hover .dropdown-options {
-  display: block;
+  .text-input {
+    margin: 10px 0;
+    input {
+      width: 100%;
+      padding: 5px 10px;
+      border-radius: $border-radius;
+      border: none;
+      text-align: center;
+      font-size: $font-size;
+      color: $font-color;
+
+      &::placeholder {
+        color: $font-color;
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-<div class="filterFields">
+<div class="filter-fields">
   <div class="dropdown">
     <button>{{ dropdownName }}</button>
     <div class="dropdown-options">
@@ -7,12 +7,12 @@
           <input
             type="text"
             placeholder="Search"
-            class="dropdownSearch"
+            class="dropdown-search"
             [formControl]="dropDownSearchFormControl"
           />
         </li>
         <li>
-          <div class="checkboxStateChange">
+          <div class="checkbox-state-change">
             <span (click)="markAllCheckboxes(true)">Select All</span>
             <span (click)="markAllCheckboxes(false)">Select None</span>
           </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="textInput">
+  <div class="text-input">
     <input
       [formControl]="textInputFormControl"
       placeholder="{{ inputName }}"
