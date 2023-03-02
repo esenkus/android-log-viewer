@@ -1,26 +1,7 @@
 {
-  "name": "angular-electron",
-  "version": "12.0.0",
-  "description": "Angular 15 with Electron 22 (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
-  "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
-  },
-  "keywords": [
-    "angular",
-    "angular 15",
-    "electron",
-    "electron 22",
-    "nodejs",
-    "typescript",
-    "playwright",
-    "eslint",
-    "sass",
-    "windows",
-    "mac",
-    "linux"
-  ],
+  "name": "android-log-viewer",
+  "version": "0.1.0",
+  "description": "Androd log viewer written in Angular 15 with Electron 22",
   "main": "app/main.js",
   "private": true,
   "scripts": {
