@@ -2,11 +2,38 @@ $font-size: 18px;
 $font-color: grey;
 $border-radius: 0px;
 
+input:focus-visible,
+input:focus {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
 .filterFields {
   display: block;
   justify-content: space-between;
   flex-direction: column;
   color: $font-color;
+}
+
+.checkboxStateChange {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  span {
+    max-width: 100%;
+    color: $font-color;
+    border: none;
+    border-radius: $border-radius;
+    font-size: $font-size;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid gray;
+    }
+  }
 }
 
 .filterFields,
@@ -25,11 +52,6 @@ $border-radius: 0px;
     border: none;
     text-align: center;
     font-size: $font-size;
-
-    &:focus-visible,
-    :focus {
-      border: none;
-    }
 
     &::placeholder {
       color: $font-color;
@@ -79,6 +101,10 @@ button {
     label {
       display: flex;
       padding: 5px 40px;
+
+      &:hover {
+        border: 1px solid gray;
+      }
     }
     .dropdownSearch {
       padding: 5px 40px;
@@ -86,7 +112,6 @@ button {
 
     &:hover {
       border-radius: $border-radius;
-      border: 1px solid gray;
       cursor: pointer;
       font-size: $font-size;
     }
