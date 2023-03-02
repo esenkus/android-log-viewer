@@ -11,12 +11,18 @@
             [formControl]="dropDownSearchFormControl"
           />
         </li>
+        <li>
+          <div class="checkboxStateChange">
+            <span (click)="markAllCheckboxes(true)">Select All</span>
+            <span (click)="markAllCheckboxes(false)">Unselect All</span>
+          </div>
+        </li>
         <li *ngFor="let option of optionsList">
           <label *ngIf="shouldBeShown(option)"
             ><input
               type="checkbox"
-              checked
               (click)="updateDropDownSelection(option)"
+              [checked]="checkboxEnabled"
             />{{ option }}</label
           >
         </li>

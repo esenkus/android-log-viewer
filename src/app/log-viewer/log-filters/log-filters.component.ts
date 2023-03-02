@@ -19,6 +19,8 @@ export class LogFiltersComponent {
   textInputFormControl = new FormControl();
   dropDownSearchFormControl = new FormControl('');
 
+  checkboxEnabled: boolean | null = true;
+
   searchPhrase: string[] = [];
 
   public updateDropDownSelection(event) {
@@ -33,5 +35,9 @@ export class LogFiltersComponent {
     return option
       .toLowerCase()
       .includes(this.dropDownSearchFormControl.value.toLowerCase());
+  }
+
+  public markAllCheckboxes(value) {
+    this.checkboxEnabled = value ? true : null;
   }
 }
