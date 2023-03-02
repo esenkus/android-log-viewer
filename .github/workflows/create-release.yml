@@ -44,7 +44,6 @@ jobs:
     needs: Make_GitHub_Release
     name: Build And Upload Release
     runs-on: ${{ matrix.os }}
-    secrets: inherit
     strategy:
       matrix:
         include:
