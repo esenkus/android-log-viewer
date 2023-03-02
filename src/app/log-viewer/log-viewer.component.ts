@@ -53,6 +53,12 @@ export class LogViewerComponent {
     // TODO: for the future, somehow handle scrolling in child component
     const logLine = this.service.logFromString(log);
     this.allLogLines.push(logLine);
+    if (!this.selectedLogKeys.has(logLine.logKey)) {
+      this.selectedLogKeys.add(logLine.logKey);
+      this.possibleLogKeyValues = Array.from(
+        this.selectedLogKeys.values()
+      ).sort();
+    }
     this.checkAndApplyLogLineFilter(logLine);
   }
 
