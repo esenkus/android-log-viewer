@@ -8,8 +8,8 @@ on:
 jobs:
   Make_GitHub_Release:
     name: Create Release
-    runs-on: ubuntu-latest
     secrets: inherit
+    runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.step_version.outputs.version }}
     steps:
@@ -73,14 +73,6 @@ jobs:
       - name: Read package.json
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package_version
-
-      - name: Secrets And Envirotment
-        uses: timheuer/base64-to-file@v1.2
-
-        with:
-          fileName: "environment.prod.ts"
-          fileDir: "./src/environments/"
-          encodedString: ${{ secrets.ANGULAR_ENVIROTMENT_PRODUCTION }}
 
       - name: Context
         env:
