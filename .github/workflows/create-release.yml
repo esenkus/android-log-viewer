@@ -4,12 +4,12 @@ on:
   push:
     tags:
       - "v*"
-#    branches: [ dev ]
 
 jobs:
   Make_GitHub_Release:
     name: Create Release
     runs-on: ubuntu-latest
+    secrets: inherit
     outputs:
       version: ${{ steps.step_version.outputs.version }}
     steps:
@@ -76,6 +76,7 @@ jobs:
 
       - name: Secrets And Envirotment
         uses: timheuer/base64-to-file@v1.2
+
         with:
           fileName: "environment.prod.ts"
           fileDir: "./src/environments/"
