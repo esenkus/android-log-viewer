@@ -1,8 +1,22 @@
 # Android log viewer
 
-![App-sample](app-sample.png)
+![App-sample](app-sample.png)   
 Android Log viewer is a tool used to load existing android log files and view them with a bit of power on your hands.
 It is written in Typescript using Electron + Angular using [angular-electron](https://github.com/maximegris/angular-electron) as a base project
+
+## Running
+
+### build app
+
+`npm run electron:build`
+
+### web version
+
+`npm run ng:serve`
+
+### app version
+
+`npm run electron:local`
 
 ## Features are
 
@@ -15,7 +29,7 @@ It is written in Typescript using Electron + Angular using [angular-electron](ht
 ## Features to add
 
 - Finish search support for desktop mode
-- Add persistant/global key excludes for always irrelevant log keys
+- Add persistent/global key excludes for always irrelevant log keys
 - Allow opening file using this app (Open with...)
 - Add latest Android Studio log parsing
 - Add real time log viewing from device
