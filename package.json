@@ -1,6 +1,6 @@
 {
   "name": "android-log-viewer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Androd log viewer written in Angular 15 with Electron 22",
   "main": "app/main.js",
   "private": true,
