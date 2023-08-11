@@ -5,31 +5,46 @@
   border-color: $secondary-background;
   border-radius: 1px;
   border-style: solid;
-  // margin: 10px;
 }
-.log-line:hover {
-  -webkit-filter: brightness(70%);
-}
+
 .log-column {
   padding-right: 5px;
 }
+
 .log-lines {
   margin-left: 30px;
 }
+
 .log-line-number {
   color: gray;
   text-align: end;
   user-select: none;
 }
+
 .overflow-guard {
   overflow: hidden;
   height: calc(95vh - 145px);
 }
+
 .scrollable {
   overflow: auto;
   height: 100%;
 }
+
 .log-area-content {
   width: max-content;
   height: max-content;
+}
+
+.search {
+  position: absolute;
+  right: 50px;
+  z-index: 1;
+  background-color: white;
+}
+
+.search-counter {
+  position: absolute;
+  margin-left: 130px;
+  margin-top: 2px
 }

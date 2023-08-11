@@ -19,6 +19,18 @@ export interface LogLine {
   logLevelString: string;
 }
 
+export enum SearchLineType {
+  key = 'key',
+  message = 'message'
+}
+
+export interface SearchLine {
+  row: number;
+  type: SearchLineType;
+  start: number;
+  end: number;
+}
+
 export enum ContextMenuAction {
   excludeKey
 }

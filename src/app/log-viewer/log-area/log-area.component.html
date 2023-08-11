@@ -4,6 +4,13 @@
   <div>
     <!-- overflow guard? -->
     <div class="overflow-guard">
+      <div class="search" *ngIf="searchBarVisible">
+    <span *ngIf="searchMatches.length > 0" class="search-counter"
+    >{{activeSearchMatchIndex + 1}}/{{searchMatches.length}}</span>
+        <input id="search-box" type="text" placeholder="Search" [(ngModel)]="searchText"
+               (keydown)="searchKeydown($event)"
+               (input)="doSearch($event)" #searchBox/>
+      </div>
       <!-- scrollable element -->
       <div class="scrollable">
         <!-- lines content -->
@@ -17,24 +24,31 @@
           ></app-context-menu>
           <table>
             <tbody>
-              <tr
-                class="log-line"
-                st-select-mode="none"
-                *ngFor="let line of logLines; let i = index"
-                [ngStyle]="{ color: line.color }"
-                (contextmenu)="displayContextMenu($event, line); (false)"
-              >
-                <td class="log-column log-line-number">
-                  {{ i }}
-                </td>
-                <td class="log-column">{{ line.date }}</td>
-                <td class="log-column">{{ line.time }}</td>
-                <td class="log-column">{{ line.mainProcessId }}</td>
-                <td class="log-column">{{ line.workerProcessId }}</td>
-                <td class="log-column">{{ line.logLevelString }}</td>
-                <td class="log-column">{{ line.logKey }}</td>
-                <td class="log-column">{{ line.logMessage }}</td>
-              </tr>
+            <tr
+              class="log-line"
+              st-select-mode="none"
+              id="log-row-{{i}}"
+              *ngFor="let line of logLines; let i = index"
+              [ngStyle]="{ color: line.color }"
+              (contextmenu)="displayContextMenu($event, line); (false)"
+            >
+              <td class="log-column log-line-number">
+                {{ i + 1 }}
+              </td>
+              <td class="log-column">{{ line.date }}</td>
+              <td class="log-column">{{ line.time }}</td>
+              <td class="log-column">{{ line.mainProcessId }}</td>
+              <td class="log-column">{{ line.workerProcessId }}</td>
+              <td class="log-column">{{ line.logLevelString }}</td>
+              <td class="log-column">
+                <span id="log-column-key-{{i}}-{{j}}"
+                      *ngFor="let char of line.logKey.split(''); let j = index">{{char}}</span>
+              </td>
+              <td class="log-column">
+                <span id="log-column-message-{{i}}-{{j}}"
+                      *ngFor="let char of line.logMessage.split(''); let j = index">{{char}}</span>
+              </td>
+            </tr>
             </tbody>
           </table>
           <!-- horizontal scrollbar -->

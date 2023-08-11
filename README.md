@@ -24,11 +24,11 @@ It is written in Typescript using Electron + Angular using [angular-electron](ht
 - Colored and aligned log view
 - Load logs from file or clipboard
 - Ability to easily exclude log key by right clicking on the log line
-- Simple search in log lines (only working in browser mode for now)
+- Simple search in log lines
 
 ## Features to add
 
-- Finish search support for desktop mode
+- Increase app performance when bigger log file is opened (~1k lines already slows it down a notch)
 - Add persistent/global key excludes for always irrelevant log keys
 - Allow opening file using this app (Open with...)
 - Add latest Android Studio log parsing
