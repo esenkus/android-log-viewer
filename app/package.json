@@ -1,7 +1,7 @@
 {
   "name": "android-log-viewer",
   "description": "Android Log viewer with Electron and Angular",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "main.js",
   "private": true,
   "dependencies": {
