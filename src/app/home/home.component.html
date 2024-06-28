@@ -1,10 +1,29 @@
+<div>
+  <p style="display: block; text-align: center; color: white">Version: 1.2.0</p>
+</div>
 <div class="container">
   <div>
     <button (click)="loadLogFromFile()">
       Load from file
-      <input type="file" style="display:none" (change)="fileSelected($event)" />
+      <input type="file" style="display:none" (change)="fileSelected($event)"/>
     </button>
     <button (click)="openLogInputDialog()">Load from input</button>
+
+    <!-- spacer -->
+    <div style="display: inline-block; width: 10%"></div>
+
+    <div class="text-input">
+      <input
+        style="width: 15px"
+        [formControl]="savedFiltersFormControl"
+        type="checkbox">
+      <input
+        type="text"
+        class="saved-input"
+        placeholder="Saved Filters"
+        [formControl]="textInputFormControl"
+      />
+    </div>
   </div>
 
   <div *ngIf="showLogInputDialog">
@@ -18,5 +37,6 @@
   <app-log-viewer
     [rawLogLines]="rawLogLines"
     [additionalLogLine]="additionalLogLine"
+    [savedFilters]="savedFilters"
   ></app-log-viewer>
 </div>

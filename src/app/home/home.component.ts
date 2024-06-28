@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -52,9 +53,26 @@ export class HomeComponent implements OnInit {
   logInputText: string;
   showLogInputDialog = false;
 
-  constructor(private router: Router) {}
+  savedFiltersFormControl = new FormControl(false);
+  textInputFormControl = new FormControl('');
+  savedFilters = '';
+
+  constructor(private router: Router) {
+    this.savedFiltersFormControl.valueChanges.subscribe(value => {
+      this.savedFilters = value ? this.textInputFormControl.value : '';
+    });
+
+    this.textInputFormControl.valueChanges.subscribe(value => {
+      localStorage.setItem('savedFilters', value);
+      if (!this.savedFiltersFormControl.value) {
+        return;
+      }
+      this.savedFilters = value;
+    });
+  }
 
   ngOnInit(): void {
+    this.textInputFormControl.setValue(localStorage.getItem('savedFilters'));
     for (let i = 1; i <= 10; i++) {
       setTimeout(() => {
         this.additionalLogLine = `02-20 17:08:37.988  6294  6299 I zygote64: After code cache collection, code=176KB, data=${i}KB`;

@@ -11,6 +11,28 @@ $border-radius: 0px;
   overflow: hidden;
 }
 
+.text-input {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+  width: 100%;
+
+  .saved-input {
+    width: 800px;
+    max-width: 100%;
+    padding: 5px 10px;
+    border-radius: $border-radius;
+    border: none;
+    text-align: center;
+    font-size: $font-size;
+    color: $font-color;
+
+    &::placeholder {
+      color: $font-color;
+    }
+  }
+}
+
 button {
   margin: 0 10px 10px 0;
   max-width: 100%;

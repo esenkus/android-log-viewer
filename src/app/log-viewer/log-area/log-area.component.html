@@ -40,14 +40,16 @@
               <td class="log-column">{{ line.mainProcessId }}</td>
               <td class="log-column">{{ line.workerProcessId }}</td>
               <td class="log-column">{{ line.logLevelString }}</td>
-              <td class="log-column">
-                <span id="log-column-key-{{i}}-{{j}}"
-                      *ngFor="let char of line.logKey.split(''); let j = index">{{char}}</span>
-              </td>
-              <td class="log-column">
-                <span id="log-column-message-{{i}}-{{j}}"
-                      *ngFor="let char of line.logMessage.split(''); let j = index">{{char}}</span>
-              </td>
+              <td class="log-column">{{ line.logKey }}</td>
+              <td class="log-column">{{ line.logMessage }}</td>
+<!--              <td class="log-column">-->
+<!--                <span id="log-column-key-{{i}}-{{j}}"-->
+<!--                      *ngFor="let char of line.logKey.split(''); let j = index">{{char}}</span>-->
+<!--              </td>-->
+<!--              <td class="log-column">-->
+<!--                <span id="log-column-message-{{i}}-{{j}}"-->
+<!--                      *ngFor="let char of line.logMessage.split(''); let j = index">{{char}}</span>-->
+<!--              </td>-->
             </tr>
             </tbody>
           </table>

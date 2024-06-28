@@ -31,13 +31,15 @@ export class LogViewerService {
     logLevelFilters: Set<LogLevel>,
     keyFilters: Set<string>,
     priorityKeyFilters: string[] = [],
-    valueFilter: string = ''
+    valueFilter: string = '',
+    savedKeyFilters: string[] = []
   ): boolean {
     if (!logLevelFilters.has(logLine.logLevel)) {
       return false;
     }
-    if (priorityKeyFilters.length) {
-      const contains = priorityKeyFilters
+    const joinedPriorityKeyFilters = priorityKeyFilters.concat(savedKeyFilters);;
+    if (joinedPriorityKeyFilters.length) {
+      const contains = joinedPriorityKeyFilters
         .filter(priorityKeyFilter => priorityKeyFilter.length)
         .map(priorityKeyFilter => priorityKeyFilter.toLowerCase())
         .some(priorityKeyFilter =>
@@ -49,7 +51,7 @@ export class LogViewerService {
     }
     // skip simple key filters if priority ones are defined
     // TODO: think if it's worth doing so
-    if (!priorityKeyFilters.length) {
+    if (!joinedPriorityKeyFilters.length) {
       if (!keyFilters.has(logLine.logKey)) {
         return false;
       }

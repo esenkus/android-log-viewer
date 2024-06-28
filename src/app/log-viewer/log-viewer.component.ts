@@ -22,6 +22,7 @@ export class LogViewerComponent {
   possibleLogKeyValues: string[] = [];
   selectedLogKeys: Set<string> = new Set();
   priorityKeyFilters: string[] = [];
+  savedKeyFilters: string[] = [];
   lastManuallyExcludedLogKey: string;
 
   valueFilter: string;
@@ -42,6 +43,12 @@ export class LogViewerComponent {
     this.possibleLogKeyValues = Array.from(
       this.selectedLogKeys.values()
     ).sort();
+    this.reapplyAllFilters();
+  }
+
+  @Input()
+  public set savedFilters(value: string) {
+    this.savedKeyFilters = value ? value.split(' ') : [];
     this.reapplyAllFilters();
   }
 
@@ -124,6 +131,7 @@ export class LogViewerComponent {
     console.log(this.selectedLogKeys);
     console.log(this.priorityKeyFilters);
     console.log(this.valueFilter);
+    console.log(this.savedKeyFilters);
     this.allLogLines.forEach(logLine =>
       this.checkAndApplyLogLineFilter(logLine)
     );
@@ -136,7 +144,8 @@ export class LogViewerComponent {
         this.selectedLogLevels,
         this.selectedLogKeys,
         this.priorityKeyFilters,
-        this.valueFilter
+        this.valueFilter,
+        this.savedKeyFilters
       )
     ) {
       this.filteredLogLines.push(logLine);
