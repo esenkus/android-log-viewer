@@ -55,8 +55,8 @@ jobs:
             asset_name: "android-log-viewer ${{ needs.Make_GitHub_Release.outputs.version }}.exe"
             asset_content_type: application/exe
           - os: macos-latest
-            artifact_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}.dmg"
-            asset_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}.dmg"
+            artifact_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}-arm64.dmg"
+            asset_name: "android-log-viewer-${{ needs.Make_GitHub_Release.outputs.version }}-arm64.dmg"
             asset_content_type: application/x-apple-diskimage
 
     steps:
